@@ -13,7 +13,7 @@ const leer = require("prompt-sync")();
 
 function main() {
 
-    hola gente linda
+    //hola gente linda
     
 }
 
