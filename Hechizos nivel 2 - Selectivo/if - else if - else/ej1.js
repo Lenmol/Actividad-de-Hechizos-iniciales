@@ -8,11 +8,20 @@ const leer = require("prompt-sync")();
  * 
  * Por ejemplo si el cliente tiene 14 años si puede comprar, en otro caso si tuviera 9 entonces no
  */
+const edadPermitida= 11;
+let edadUser = 0;
+
+console.log("¿Cual es su edad?");
+edadUser = Number(leer());
 
 
-function main() {
-    
+function edadParaComprarVarita(edadUser) {
+    if (edadUser >= edadPermitida){
+        return console.log("Usted puede comprar una varita, elija la que le guste");
+    } else{
+        return console.log("Usted no puede adquirir una varita, hasta los 11 años")
+    }
 }
 
 
-main();
+edadParaComprarVarita(edadUser);
