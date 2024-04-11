@@ -19,7 +19,6 @@ console.log("Dime que que planta encontraste, Mandrágora[0], Valeriana[1], Bubo
 plantaEncontrada = Number(leer());
 
 function plantaPermitida(plantaEncontrada) {
-    
     if (plantaEncontrada < 2 ){
         return console.log("Puede hacer la prueba, porque encontro", PLANTAS[plantaEncontrada]);
     } else if (plantaEncontrada >= 2){
@@ -27,5 +26,4 @@ function plantaPermitida(plantaEncontrada) {
     } 
     
 }
-
 plantaPermitida(plantaEncontrada);
