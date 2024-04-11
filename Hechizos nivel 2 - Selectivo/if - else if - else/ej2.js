@@ -12,10 +12,25 @@ const leer = require("prompt-sync")();
  * Por ejemplo si el estudiante saco 100 puntos entonces pertenece a Gryffindor o si sacara 30 entonces pertenece a Slytherin
  */
 
+const GRYFFINDOR = 90;
+const HUFFLEPUFF = 70;
+const RAVENCLAW= 50;
+// const SLYTHERIN= 50;
+let puntuacionExamen = 0;
 
-function main() {
-    
+console.log("Ingrese su puntuacion del examen");
+puntuacionExamen = Number(leer());
+
+function eleccionCasaHogwarts(puntuacionExamen) {
+    if (puntuacionExamen >= GRYFFINDOR){
+        return console.log("usted pertenece a Gryffindor");
+    } else if(puntuacionExamen >= HUFFLEPUFF){
+        return console.log("Usted pertenece a Hufflepuff");
+    } else if (puntuacionExamen >= RAVENCLAW) {
+        console.log("Usted pertenece a Revenclaw");
+    } else {
+        return console.log("Usted pertenece a Slytherin");
+    }
 }
 
-
-main();
+eleccionCasaHogwarts(puntuacionExamen);
