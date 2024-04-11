@@ -18,7 +18,7 @@ diasPracticados = Number(leer());
 
 
 function potenciaHechizoPatronus(edadDelMago, diasPracticados) {
-    let potenciaDeHechizo = (edadDelMago * 2) - (diasPracticados / 2);
+    let potenciaDeHechizo = (edadDelMago * 2) + (diasPracticados / 2);
     return console.log(`La potencia del hechizo Patronus es de: ${potenciaDeHechizo}`)
 }
 
