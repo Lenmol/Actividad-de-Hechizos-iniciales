@@ -11,21 +11,21 @@ const leer = require("prompt-sync")();
  * Por ejemplo si el estudiante quiere traer un Whomping Willow no podra hacer el examen, en otro caso si trae una Valeriana se le otorgara el permiso
  */
 []
-
+const PLANTAS = ["Mandrágora", "Valeriana", "Bubotuber", "Whomping Willow", "Una planta no permitida"];
 let plantaEncontrada = 0;
 
 
-console.log("Dime que que planta encontraste, Mandrágora[1], Valeriana[2], Bubotuber[3], Whomping Willow[4] o es otro[5]");
+console.log("Dime que que planta encontraste, Mandrágora[0], Valeriana[1], Bubotuber[2], Whomping Willow[3] o es otro[4]");
 plantaEncontrada = Number(leer());
 
 function plantaPermitida(plantaEncontrada) {
     
-    if (plantaEncontrada <= 2 ){
-        return console.log("Puedes hacer el examen");
-    } else if (plantaEncontrada >= 3){
-        return console.log("No puede hacer el examen");
-    }
+    if (plantaEncontrada < 2 ){
+        return console.log("Puede hacer la prueba, porque encontro", PLANTAS[plantaEncontrada]);
+    } else if (plantaEncontrada >= 2){
+        return console.log("No puede hacer el examen porque encontraste", PLANTAS[plantaEncontrada]);
+    } 
+    
 }
-
 
 plantaPermitida(plantaEncontrada);
