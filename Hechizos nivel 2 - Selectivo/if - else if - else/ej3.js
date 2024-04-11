@@ -20,7 +20,7 @@ plantaEncontrada = Number(leer());
 
 function plantaPermitida(plantaEncontrada) {
     if (plantaEncontrada < 2 ){
-        return console.log("Puede hacer la prueba, porque encontro", PLANTAS[plantaEncontrada]);
+        return console.log("Puedes hacer el examen, porque encontraste", PLANTAS[plantaEncontrada]);
     } else if (plantaEncontrada >= 2){
         return console.log("No puede hacer el examen porque encontraste", PLANTAS[plantaEncontrada]);
     } 
