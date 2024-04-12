@@ -28,7 +28,7 @@ const AVADA_KEDAVRA = 2211;
 let codigoIngresado = 0;
 
 console.log("Ingrese el codigo para invocar un hechizo");
-codigoIngresado = 
+codigoIngresado = fyj6yr
 
 
 function invocacionEchizos() {
