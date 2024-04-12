@@ -13,10 +13,27 @@ const leer = require("prompt-sync")();
  * 
  */
 
+let posion = "def poción";
 
-function main() {
-    
+console.log("Dime el nombre de la poción y te dire su dificultad de uso");
+posion = String(leer());
+
+function clasificaciónPosion(posion) {
+    switch (posion) {
+        case "Felix Felicis":
+            console.log("es extremadamente compleja y peligrosa.")
+            break;
+        case "Polvo de Flu":
+            console.log("es compleja pero útil en la red de transportación.");
+            break;
+        case  "Pocion Multijugos":
+            console.log("es complicada pero muy útil para transformaciones temporales.");
+            break;
+        default:
+            console.log("No tenemos información sobre esa poción en nuestros registros")
+            break;
+    }
 }
 
 
-main();
+clasificaciónPosion(posion);
