@@ -8,12 +8,29 @@ const leer = require("prompt-sync")();
  * Unicornio - Las varitas con núcleo de unicornio son conocidas por su pureza y fuerza.
  * Dragón - ¡Cuidado! Las varitas con núcleo de dragón son poderosas pero pueden ser temperamentales.
  * Cualquier otro tipo de nucleo - No reconocemos ese tipo de núcleo. Por favor, ingrese un núcleo válido.
- */
+*/
 
+let nucleoElejidoUser = "def varitas";
 
-function main() {
+console.log("Ingrese el nuecleo que quieras para tu varita [feniz, unicornio, dragon o otro");
+nucleoElejidoUser = String(leer());
+
+function eleccionVaritasMagicas(nucleoElejidoUser) {
+    switch (nucleoElejidoUser) {
+        case "fenix":
+            console.log("¡Excelente elección! Las varitas con núcleo de fénix son poderosas y leales.");
+            break;
+        case "unicornio":
+            console.log("Las varitas con núcleo de unicornio son conocidas por su pureza y fuerza.");
+            break;
+        case "dragon":
+            console.log("¡Cuidado! Las varitas con núcleo de dragón son poderosas pero pueden ser temperamentales.");
+            break;
+        default:
+            console.log("No reconocemos ese tipo de núcleo. Por favor, ingrese un núcleo válido.")
+            break;
+    }
     
 }
 
-
-main();
+eleccionVaritasMagicas(nucleoElejidoUser);
