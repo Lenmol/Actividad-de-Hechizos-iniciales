@@ -11,15 +11,17 @@ const leer = require("prompt-sync")();
 const NIVEL_ACEPTADO_LEALTAD = 70;
 const NIVEL_ACEPTADO_ASTUCIA = 80;
 
-let nivelLealtadIngresado= 0;
-let nivelAstuciaIngresado = 0;
 
-console.log("Ingrese el nivel de lealtad de su varita");
-nivelLealtadIngresado = Number(leer());
-console.log("Ingrese la astucia de su varita");
-nivelAstuciaIngresado = Number(leer());
 
-function verificacionVarita(nivelLealtadIngresado, nivelAstuciaIngresado) {
+function verificacionVarita() {
+    let nivelLealtadIngresado= 0;
+    let nivelAstuciaIngresado = 0;
+
+    console.log("Ingrese el nivel de lealtad de su varita");
+    nivelLealtadIngresado = Number(leer());
+    console.log("Ingrese la astucia de su varita");
+    nivelAstuciaIngresado = Number(leer());
+
     if ((nivelLealtadIngresado >= NIVEL_ACEPTADO_LEALTAD )||(nivelAstuciaIngresado >= NIVEL_ACEPTADO_ASTUCIA)){
         return console.log("La varita es apta para su uso")
     } else {
@@ -29,4 +31,4 @@ function verificacionVarita(nivelLealtadIngresado, nivelAstuciaIngresado) {
 }
 
 
-verificacionVarita(nivelLealtadIngresado, nivelAstuciaIngresado);
+verificacionVarita();

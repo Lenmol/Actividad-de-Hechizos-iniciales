@@ -11,25 +11,28 @@ const leer = require("prompt-sync")();
 
 const EDAD_PERMITIDA = 13;
 const MAYOR_EDAD= 17;
-let edadUser = 0;
-let permisoDeResponsable = 0;
 
-console.log("Digame tu edad");
-edadUser = Number(leer());
-if (edadUser >= MAYOR_EDAD){
-    console.log("Usted puede visitar el pueblo Hogsmeade");
-} else {
-console.log("Tiene permiso de sus padres? SI[1] NO[2]");
-permisoDeResponsable = Number(leer());
-verificacionVisitaHogsmeade(edadUser, permisoDeResponsable);
-}
+function verificacionVisitaHogsmeade(){
+    let edadUser = 0;
+    let permisoDeResponsable = 0;
 
-
-function verificacionVisitaHogsmeade(edadUser, permisoDeResponsable){
-
-    if ((edadUser >= EDAD_PERMITIDA) && (permisoDeResponsable == 1)){
+    console.log("Digame su edad");
+    edadUser = Number(leer());
+    if (edadUser >= MAYOR_EDAD){
         console.log("Usted puede visitar el pueblo Hogsmeade");
     } else {
-        console.log(`No puedes entrar al pueblo porque la edad permitida es de ${EDAD_PERMITIDA} con el permiso de los padres`);
+        console.log("Tiene permiso de sus padres? SI[1] NO[2]");
+        permisoDeResponsable = Number(leer());
+        
+            if ((edadUser >= EDAD_PERMITIDA) && (permisoDeResponsable == 1)){
+                console.log("Usted puede visitar el pueblo Hogsmeade");
+            } else {
+                console.log(`No puedes entrar al pueblo porque la edad permitida es de ${EDAD_PERMITIDA} con el permiso de los padres`);
+            }
     }
+
+
+    
 }
+
+verificacionVisitaHogsmeade();

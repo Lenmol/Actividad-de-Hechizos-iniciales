@@ -12,13 +12,17 @@ const leer = require("prompt-sync")();
  */
 []
 const PLANTAS = ["Mandrágora", "Valeriana", "Bubotuber", "Whomping Willow", "Una planta no permitida"];
-let plantaEncontrada = 0;
 
 
-console.log("Dime que que planta encontraste, Mandrágora[0], Valeriana[1], Bubotuber[2], Whomping Willow[3] o es otro[4]");
-plantaEncontrada = Number(leer());
 
-function plantaPermitida(plantaEncontrada) {
+
+
+function plantaPermitida() {
+    let plantaEncontrada = 0;
+
+    console.log("Dime que que planta encontraste, Mandrágora[0], Valeriana[1], Bubotuber[2], Whomping Willow[3] o es otro[4]");
+    plantaEncontrada = Number(leer());
+
     if (plantaEncontrada < 2 ){
         return console.log("Puedes hacer el examen, porque encontraste", PLANTAS[plantaEncontrada]);
     } else if (plantaEncontrada >= 2){
@@ -26,4 +30,4 @@ function plantaPermitida(plantaEncontrada) {
     } 
     
 }
-plantaPermitida(plantaEncontrada);
+plantaPermitida();
