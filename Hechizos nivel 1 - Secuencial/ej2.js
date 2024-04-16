@@ -9,17 +9,19 @@ const leer = require("prompt-sync")();
  * 
  * Por ejemplo si hay 7 varitas y 4 libros a usar los ingredientes necesarios son 29
  */
-let estudiantes = 0;
-let libros= 0;
 
-//* Donde podemos saber el total triplicando la cantidad de varitas por estudiante y duplicando la cantidad de libros 
 
-console.log("hola, ingrese la cantidad de estudiantes presentes");
-estudiantes = Number(leer());
-console.log("Tambien ingrese la cantidad de libros que van a usar")
-libros = Number(leer());
+function ingredientesNecesarios() {
+    let estudiantes = 0;
+    let libros =0;
 
-function ingredientesNecesarios(estudiantes, libros) {
+    //* Donde podemos saber el total triplicando la cantidad de varitas por estudiante y duplicando la cantidad de libros 
+
+    console.log("hola, ingrese la cantidad de estudiantes presentes");
+    estudiantes = Number(leer());
+    console.log("Tambien ingrese la cantidad de libros que van a usar")
+    libros = Number(leer());
+    
     let elTripleDeVaritas = estudiantes * 3;
     let elDobleDeLibros = libros * 2;
     let cantIngredientes = elDobleDeLibros + elTripleDeVaritas;
@@ -27,4 +29,4 @@ function ingredientesNecesarios(estudiantes, libros) {
 }
 
 
-ingredientesNecesarios(estudiantes, libros);
+ingredientesNecesarios();
