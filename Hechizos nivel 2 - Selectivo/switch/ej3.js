@@ -25,22 +25,33 @@ const WINGARDIUM_LEVIOSA = 4321;
 const EXPELLIARMUS = 1111;
 const AVADA_KEDAVRA = 2211;
 
-let codigoIngresado = 0;
-
-console.log("Ingrese el codigo para invocar un hechizo");
-codigoIngresado = 
 
 
 function invocacionEchizos() {
-    switch (key) {
-        case value:
-            
+    let codigoIngresado = 0;
+
+    console.log("Ingrese el codigo para invocar un hechizo");
+    codigoIngresado = Number(leer());
+
+
+    switch (codigoIngresado) {
+        case EXPECTO_PATRONUM:
+            console.log("Expecto Patronum!!!"); 
             break;
-    
+        case WINGARDIUM_LEVIOSA:
+            console.log("Wingardium Leviosa!!!");
+            break;
+        case EXPELLIARMUS:
+            console.log("Expelliarmus!!!");
+            break;
+        case AVADA_KEDAVRA:
+            console.log("Avada Kedavra!!!");
+            break;
         default:
+            console.log("El codigo ingresado es incorrecto")
             break;
     }
 }
 
 
-main();
+invocacionEchizos();
