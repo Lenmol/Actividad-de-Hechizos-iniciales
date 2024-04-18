@@ -16,12 +16,14 @@ const GRYFFINDOR = 90;
 const HUFFLEPUFF = 70;
 const RAVENCLAW= 50;
 // const SLYTHERIN= 50;
-let puntuacionExamen = 0;
 
-console.log("Ingrese su puntuacion del examen");
-puntuacionExamen = Number(leer());
 
-function eleccionCasaHogwarts(puntuacionExamen) {
+function eleccionCasaHogwarts() {
+    let puntuacionExamen = 0;
+
+    console.log("Ingrese su puntuacion del examen");
+    puntuacionExamen = Number(leer());
+
     if (puntuacionExamen >= GRYFFINDOR){
         return console.log("usted pertenece a Gryffindor");
     } else if(puntuacionExamen >= HUFFLEPUFF){
@@ -33,4 +35,4 @@ function eleccionCasaHogwarts(puntuacionExamen) {
     }
 }
 
-eleccionCasaHogwarts(puntuacionExamen);
+eleccionCasaHogwarts();

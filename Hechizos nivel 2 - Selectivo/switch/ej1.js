@@ -13,12 +13,14 @@ const leer = require("prompt-sync")();
  * 
  */
 
-let posion = "def poción";
 
-console.log("Dime el nombre de la poción y te dire su dificultad de uso");
-posion = String(leer());
 
-function clasificaciónPosion(posion) {
+function clasificaciónPosion() {
+    let posion = "def poción";
+
+    console.log("Dime el nombre de la poción y te dire su dificultad de uso");
+    posion = String(leer());
+
     switch (posion) {
         case "Felix Felicis":
             console.log("es extremadamente compleja y peligrosa.")
@@ -36,4 +38,4 @@ function clasificaciónPosion(posion) {
 }
 
 
-clasificaciónPosion(posion);
+clasificaciónPosion();

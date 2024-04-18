@@ -10,12 +10,14 @@ const leer = require("prompt-sync")();
  * Cualquier otro tipo de nucleo - No reconocemos ese tipo de núcleo. Por favor, ingrese un núcleo válido.
 */
 
-let nucleoElejidoUser = "def varitas";
 
-console.log("Ingrese el nuecleo que quieras para tu varita [feniz, unicornio, dragon o otro");
-nucleoElejidoUser = String(leer());
 
-function eleccionVaritasMagicas(nucleoElejidoUser) {
+function eleccionVaritasMagicas() {
+    let nucleoElejidoUser = "def varitas";
+
+    console.log("Ingrese el nuecleo que quieras para tu varita [feniz, unicornio, dragon o otro");
+    nucleoElejidoUser = String(leer());
+
     switch (nucleoElejidoUser) {
         case "fenix":
             console.log("¡Excelente elección! Las varitas con núcleo de fénix son poderosas y leales.");
@@ -33,4 +35,4 @@ function eleccionVaritasMagicas(nucleoElejidoUser) {
     
 }
 
-eleccionVaritasMagicas(nucleoElejidoUser);
+eleccionVaritasMagicas();
