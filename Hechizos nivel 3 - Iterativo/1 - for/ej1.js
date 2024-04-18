@@ -11,7 +11,9 @@ const leer = require("prompt-sync")();
  */
 const INTENTOS_MAXIMOS = 3;
 
-const HECHIZO_NECESITADO = ["wingardium leviosa", "avada kedavra", "expelliarmus"];
+const EXPELLIARMUS = "expelliarmus";
+const AVADA_KEDAVRA = "avada kedavra"
+const HECHIZO_NECESITADO = "wingardium leviosa";
 
 function nombraHechizoCorrectamente() {
     let hechizoNombrado = "def echizo";
@@ -28,7 +30,7 @@ function nombraHechizoCorrectamente() {
         }else if (i == INTENTOS_MAXIMOS) {
             console.log(`Lo siento, pero te equivocaste mas de ${INTENTOS_MAXIMOS} que son los intentos maximos`)
         } else if(hechizoNombrado != HECHIZO_NECESITADO) {
-            console.log("INCORRECTO, intebtalo de nuevo");
+            console.log("INCORRECTO, intentalo de nuevo");
         }
     }
 }
