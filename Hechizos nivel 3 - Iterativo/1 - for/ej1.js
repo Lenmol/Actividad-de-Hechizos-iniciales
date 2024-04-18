@@ -9,11 +9,28 @@ const leer = require("prompt-sync")();
  * 
  * Extra: permitir que el programa acepte 3 hechizos diferentes
  */
+const INTENTOS_MAXIMOS = 3;
 
+const HECHIZO_NECESITADO = ["wingardium leviosa", "avada kedavra", "expelliarmus"];
 
-function main() {
+function nombraHechizoCorrectamente() {
+    let hechizoNombrado = "def echizo";
     
+   
+    for (i = 1 ; i <= INTENTOS_MAXIMOS; i++ ){
+        console.log("Dime el nombre de un hechizo");
+        hechizoNombrado = String(leer());
+
+
+        if (hechizoNombrado == HECHIZO_NECESITADO){
+            return console.log("Felicidades!!!, lo dijiste bien");
+            i = INTENTOS_MAXIMOS;
+        }else if (i == INTENTOS_MAXIMOS) {
+            console.log(`Lo siento, pero te equivocaste mas de ${INTENTOS_MAXIMOS} que son los intentos maximos`)
+        } else if(hechizoNombrado != HECHIZO_NECESITADO) {
+            console.log("INCORRECTO, intebtalo de nuevo");
+        }
+    }
 }
 
-
-main();
+nombraHechizoCorrectamente();
