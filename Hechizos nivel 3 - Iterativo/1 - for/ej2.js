@@ -12,9 +12,63 @@ const leer = require("prompt-sync")();
  */
 
 
+
+const ATAQUE_ESTUDIANTE = 267;
+const ATAQUE_DEMENTOR = 75;
+const TURNOS_TOTALES = 5;
+const HECHIZO_NECESITADO = "patronus";
+
+
+let vidaMaxDementor = 1000;
+    let vidaMaxEstudiante = 350;
+    let = hechizoIngresado = "def hechizo";
+
 function main() {
     
+
+    for (i = 1 ; i < TURNOS_TOTALES ; i++){
+        console.log(i)
+
+        console.log(`Di el hechizo correcto estudiante tenes ${vidaMaxEstudiante}, sino el dementor te atacara!`);
+        hechizoIngresado = String(leer());
+        atacandoDementor();
+        ataqueRecibido();
+
+         if (vidaMaxEstudiante <= 0){
+            console.log("Perdiste contra el dementor");
+            
+        } else if(vidaMaxEstudiante <= 180 ){
+            console.log(`Te va a ganar tenes ${vidaMaxEstudiante} de vida, repite el hechizo`);
+            hechizoIngresado = String(leer());
+            atacandoDementor();
+            console.log("Otra vez!!");
+            hechizoIngresado = String(leer());
+            atacandoDementor();
+            ataqueRecibido();
+            
+        } 
+    }
 }
 
-
 main();
+
+function atacandoDementor() {
+
+    
+    if (hechizoIngresado == HECHIZO_NECESITADO){
+        vidaMaxDementor -= ATAQUE_ESTUDIANTE;
+        if (vidaMaxDementor <= 0){
+        console.log("Lo lograste, derrotaste a Dementor");
+        i = TURNOS_TOTALES;
+        }
+        console.log(`bien Dementor tiene ${vidaMaxDementor}, pero falta para ganarle a dementor!!`);
+    } 
+}
+    
+function ataqueRecibido(){
+
+    if (hechizoIngresado != HECHIZO_NECESITADO){
+        vidaMaxEstudiante -= ATAQUE_DEMENTOR;  
+        console.log(`Te quivocaste solo tienes ${vidaMaxEstudiante} de vida`);
+    }
+}

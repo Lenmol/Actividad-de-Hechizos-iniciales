@@ -27,7 +27,13 @@ function nombraHechizoCorrectamente() {
         if (hechizoNombrado == HECHIZO_NECESITADO){
             return console.log("Felicidades!!!, lo dijiste bien");
             i = INTENTOS_MAXIMOS;
-        }else if (i == INTENTOS_MAXIMOS) {
+        } else if (hechizoNombrado == AVADA_KEDAVRA){
+            return console.log("Felicidades!!!, lo dijiste bien");
+            i = INTENTOS_MAXIMOS;
+        } else if (hechizoNombrado == EXPELLIARMUS){
+            return console.log("Felicidades!!!, lo dijiste bien");
+            i = INTENTOS_MAXIMOS;
+        } else if (i == INTENTOS_MAXIMOS) {
             console.log(`Lo siento, pero te equivocaste mas de ${INTENTOS_MAXIMOS} que son los intentos maximos`)
         } else if(hechizoNombrado != HECHIZO_NECESITADO) {
             console.log("INCORRECTO, intentalo de nuevo");
