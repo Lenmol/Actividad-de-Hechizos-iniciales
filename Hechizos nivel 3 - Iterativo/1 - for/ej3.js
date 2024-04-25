@@ -43,52 +43,63 @@ function main() {
    let cuernoBicornioIngresado = 0;
    let peloGatoNegroIngresado = 0;
    let colasSerpienteIngresado = 0;
+
+   let verica = false;
    
 
    console.log("Hola estudiantes en el dia de hoy prepararemos la posion Multijugos Para preparar esta poción,deben seguir la receta exacta y medir cuidadosamente las cantidades de cada ingrediente, tendran una limite de intentos por ingrediente")
 
       
-       
-   verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_1, sanguijuelasIngresados, SANGUIJUELAS_REVENTADAS);
+   while (verica == false){
+   verica = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_1, sanguijuelasIngresados, SANGUIJUELAS_REVENTADAS);
 
    console.log("Agitar la mezcla lentamente durante 30 segundos en dirección horaria.");
 
-   verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_2, cuernoBicornioIngresado, CUERNO_BICORNIO);
+   verica = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_2, cuernoBicornioIngresado, CUERNO_BICORNIO);
          
    console.log("Y remueve con la cuchara de palo.");
        
-   verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_3, peloGatoNegroIngresado, PELO_GATON_NEGRO);
+   verica = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_3, peloGatoNegroIngresado, PELO_GATON_NEGRO);
          
    console.log("Y mezcla suavemente en sentido antihorario durante 1 minuto.");
 
-   verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_4, colasSerpienteIngresado, COLAS_SERPIENTE);
+   verica = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_4, colasSerpienteIngresado, COLAS_SERPIENTE);
    console.log(" revuelve vigorosamente durante 2 minutos.");
       
    console.log("Deja que la poción repose durante 5 minutos antes de su uso");
 
-   
+   }
 
 }
 
+/**
+ * Veridico la cnatidad que ingresa con una cantidad de intentos
+ * @param {string} nombreIngrediente para la posion
+ * @param {number} cantidadIngresado de Ingredientes
+ * @param {Number} cantidadNecesitada Para la posion 
+ * @returns si es verdadero o falso
+ */
 function verificaCantNecesitadaIngredien(nombreIngrediente, cantidadIngresado, cantidadNecesitada){
 
 
+   let resultado = false;
    for (intentos = 1; intentos <= INTENTOS_PERMITIDOS; intentos++){
       console.log(`ingrese ${nombreIngrediente} a la caldera`);
       cantidadIngresado = Number(leer());
-
-      if (cantidadIngresado != cantidadNecesitada){
-         if (intentos == INTENTOS_PERMITIDOS){
-            console.log("Lo siento pero no tenes mas intentos permitidos");
-            return i = INTENTOS_PERMITIDOS;
-         }
+      
+      if (intentos == INTENTOS_PERMITIDOS){
+         console.log("Lo siento pero no tenes mas intentos permitidos");
+         resultado = false;
+      } else if (cantidadIngresado != cantidadNecesitada){
          console.log("Cantida incorrecta, intente otra vez");
       } else if(cantidadIngresado == cantidadNecesitada){
          console.log("Bien echo, sigue con el siguiente paso");
-         return i = 1;
+         resultado = true;
+         intentos = INTENTOS_PERMITIDOS;
       }
    
    }
+   return resultado;
 }
 
 
