@@ -28,17 +28,11 @@ function main() {
     let vidaMaxEstudiante = 350;
 
     for (i = 0 ; i < TURNOS_TOTALES ; i++){
-        
-
-        console.log(`Di el hechizo correcto estudiante tenes ${vidaMaxEstudiante}, sino el dementor te atacara!`);
-        hechizoIngresado = String(leer());
-        vidaMaxDementor = atacandoDementor(hechizoIngresado, vidaMaxDementor);
-        vidaMaxEstudiante = ataqueRecibido(hechizoIngresado, vidaMaxEstudiante);
 
          if (vidaMaxEstudiante <= 0){
             console.log("Perdiste contra el dementor");
             i = TURNOS_TOTALES
-            
+
         } else if(vidaMaxEstudiante <= 180 ){
             console.log(`Te va a ganar tenes ${vidaMaxEstudiante} de vida, repite el hechizo`);
             hechizoIngresado = String(leer());
@@ -48,7 +42,17 @@ function main() {
             vidaMaxDementor = atacandoDementor(hechizoIngresado, vidaMaxDementor);
             vidaMaxEstudiante = ataqueRecibido(hechizoIngresado, vidaMaxEstudiante);
             
-        } 
+        } else {
+            console.log(`Di el hechizo correcto estudiante tenes ${vidaMaxEstudiante}, sino el dementor te atacara!`);
+            hechizoIngresado = String(leer());
+            vidaMaxDementor = atacandoDementor(hechizoIngresado, vidaMaxDementor);
+            vidaMaxEstudiante = ataqueRecibido(hechizoIngresado, vidaMaxEstudiante);
+            
+            if (i == 4){
+            console.log("Se te acabaron los turnos")}
+            
+    }
+         
     }
 }
 

@@ -25,17 +25,21 @@ const leer = require("prompt-sync")();
 
 const NOMBRE_INGREDIENTE_1 = "Sanguijuelas Reventadas"
 const SANGUIJUELAS_REVENTADAS = 3;
+const MAX_INTEN_SANGUIJUELAS = 5
 
 const NOMBRE_INGREDIENTE_2 = "Cuerno de Bicornio"
 const CUERNO_BICORNIO = 5;
+const MAX_INTEN_CUERNO = 3;
 
 const NOMBRE_INGREDIENTE_3 = "Pelo de Gato Negro"
 const PELO_GATON_NEGRO = 1;
+const MAX_INTEN_PELO_GATO = 2;
 
 const NOMBRE_INGREDIENTE_4 = "Colas de Serpiente"
 const COLAS_SERPIENTE = 2;
+const MAX_INTEN_COLAS = 1;
 
-const INTENTOS_PERMITIDOS = 3;
+const INTENTOS_MAXIMOS = 3;
 
 
 function main() {
@@ -50,26 +54,35 @@ function main() {
    console.log("Hola estudiantes en el dia de hoy prepararemos la posion Multijugos Para preparar esta poción,deben seguir la receta exacta y medir cuidadosamente las cantidades de cada ingrediente, tendran una limite de intentos por ingrediente")
 
       
-   while (verica == false){
-   verica = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_1, sanguijuelasIngresados, SANGUIJUELAS_REVENTADAS);
+   for(i = 2 ; i < INTENTOS_MAXIMOS; i++){
 
-   console.log("Agitar la mezcla lentamente durante 30 segundos en dirección horaria.");
+      if (i < INTENTOS_MAXIMOS){
 
-   verica = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_2, cuernoBicornioIngresado, CUERNO_BICORNIO);
-         
-   console.log("Y remueve con la cuchara de palo.");
-       
-   verica = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_3, peloGatoNegroIngresado, PELO_GATON_NEGRO);
-         
-   console.log("Y mezcla suavemente en sentido antihorario durante 1 minuto.");
+       verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_1, sanguijuelasIngresados, SANGUIJUELAS_REVENTADAS, MAX_INTEN_SANGUIJUELAS);
 
-   verica = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_4, colasSerpienteIngresado, COLAS_SERPIENTE);
-   console.log(" revuelve vigorosamente durante 2 minutos.");
+         if (i != MAX_INTEN_SANGUIJUELAS){
+            console.log("Agitar la mezcla lentamente durante 30 segundos en dirección horaria.");
+            i = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_2, cuernoBicornioIngresado, CUERNO_BICORNIO, MAX_INTEN_CUERNO);
+
+            if (i != MAX_INTEN_CUERNO){
+               console.log("Y remueve con la cuchara de palo.");
+               i = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_3, peloGatoNegroIngresado, PELO_GATON_NEGRO, MAX_INTEN_PELO_GATO);
+
+               if(i != MAX_INTEN_PELO_GATO){
+                  console.log("Y mezcla suavemente en sentido antihorario durante 1 minuto.");
+                  i = verificaCantNecesitadaIngredien(NOMBRE_INGREDIENTE_4, colasSerpienteIngresado, COLAS_SERPIENTE, MAX_INTEN_COLAS);
+
+                  if (i <= MAX_INTEN_COLAS){
+                     console.log("Revuelve vigorosamente durante 2 minutos.");
+                     console.log("Y deja que la poción repose durante 5 minutos antes de su uso");
+                     i = INTENTOS_MAXIMOS;
+                  }
+               }
+            }
+         }
       
-   console.log("Deja que la poción repose durante 5 minutos antes de su uso");
-
+      }
    }
-
 }
 
 /**
@@ -79,25 +92,25 @@ function main() {
  * @param {Number} cantidadNecesitada Para la posion 
  * @returns si es verdadero o falso
  */
-function verificaCantNecesitadaIngredien(nombreIngrediente, cantidadIngresado, cantidadNecesitada){
+function verificaCantNecesitadaIngredien(nombreIngrediente, cantidadIngresado, cantidadNecesitada, intentosUser){
 
 
-   let resultado = false;
-   for (intentos = 1; intentos <= INTENTOS_PERMITIDOS; intentos++){
+   let resultado = 0;
+   for (intentos = 1; intentos <= intentosUser; intentos++){
       console.log(`ingrese ${nombreIngrediente} a la caldera`);
       cantidadIngresado = Number(leer());
-      
-      if (intentos == INTENTOS_PERMITIDOS){
-         console.log("Lo siento pero no tenes mas intentos permitidos");
-         resultado = false;
-      } else if (cantidadIngresado != cantidadNecesitada){
-         console.log("Cantida incorrecta, intente otra vez");
-      } else if(cantidadIngresado == cantidadNecesitada){
+
+      if(cantidadIngresado == cantidadNecesitada){
          console.log("Bien echo, sigue con el siguiente paso");
-         resultado = true;
-         intentos = INTENTOS_PERMITIDOS;
-      }
-   
+         resultado = 1;
+         intentos = intentosUser; 
+      } else if (intentos == intentosUser){
+         console.log("Lo siento pero no tenes mas intentos permitidos");
+         resultado = intentosUser;
+      } 
+       else if (cantidadIngresado != cantidadNecesitada){
+         console.log("Cantida incorrecta, intente otra vez");
+       }
    }
    return resultado;
 }
