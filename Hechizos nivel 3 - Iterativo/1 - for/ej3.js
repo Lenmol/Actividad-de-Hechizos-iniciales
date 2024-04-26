@@ -50,6 +50,7 @@ function main() {
 
    let verica = false;
    
+   
 
    console.log("Hola estudiantes en el dia de hoy prepararemos la posion Multijugos Para preparar esta poción,deben seguir la receta exacta y medir cuidadosamente las cantidades de cada ingrediente, tendran una limite de intentos por ingrediente")
 

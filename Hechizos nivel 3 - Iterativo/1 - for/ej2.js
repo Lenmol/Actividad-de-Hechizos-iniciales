@@ -90,4 +90,5 @@ function ataqueRecibido(hechizoFallido, miVida){
         console.log(`Te quivocaste solo tienes ${miVida} de vida`);
     }
     return miVida;
+    
 }
