@@ -15,12 +15,6 @@ Recuerda, tanto tú como tu ser querido pueden recibir ataques de los Dementores
 ¿Estás listo para adentrarte en esta emocionante aventura y demostrar tu valentía contra las fuerzas oscuras? ¡Adelante, el destino del bosque dependen de vos!
  */
 
-
-// tu misión es defender tu propia felicidad y los recuerdos alegres al igual que de una persona querida contra los Dementores. 
-
-
-// Pero ten cuidado, estos seres malignos no dudarán en atacarte y tratar de absorber tu felicidad y la de tu ser querido.
-
 const ATAQUE_DEMENTOR = 15;
 
 function main() {
