@@ -19,25 +19,20 @@ const ATAQUE_DEMENTOR = 15;
 const ATAQUE_PERSONA_MISTERIOSA = 70;
 
 function main() {
-
     let felicidad = {
     felicidadUser : 100, 
     felicidadAmigo : 100,
     }
     
     let numIngresado = 0;
-    
     let vidaDementores = 200;
-
     let perdedor = false;
     let turnosTotales = 0;
 
-    
     console.log("ingresar números aleatorios entre 0 y 3. Si adivinas correctamente el número aleatorio generado por los Dementores, lograrás defenderte y proteger tus recuerdos.");
 
     while (perdedor == false){
         let numAleatorio = Math.floor(Math.random()*4);
-        
         turnosTotales ++;
         console.log("Ingresa numero entre 0 y 3")
         numIngresado = Number(leer());
@@ -52,6 +47,13 @@ function main() {
     
 }
 }
+
+/**
+ * verifica si son iguales el numIngresado y numAleatorio
+ * @param {Number} numRandom creado en el main() 
+ * @param {Number} numUser es el numIngresado
+ * @param {number} felicidad del user y amigo los cuales se defienden 
+ */
 function verificacionIngualdad(numRandom, numUser, felicidad){
     let ataqueAleatorio = Math.floor((Math.random()*3) + 1);
     if(numRandom == numUser){
@@ -71,7 +73,12 @@ function verificacionIngualdad(numRandom, numUser, felicidad){
         }
 }
 
-
+/**
+ * Verifica tanto la felicidad de el user y amigo como tambien si perdieron los Dementores
+ * @param {number} felicidad del user y amigo 
+ * @param {number} dementores su vida 
+ * @returns Un boleano que confirma si alguien perdio o no
+ */
 function estanTristes(felicidad, dementores){
     let confirmacion = false;
     
