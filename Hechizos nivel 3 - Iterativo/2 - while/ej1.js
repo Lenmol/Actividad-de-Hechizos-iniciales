@@ -24,40 +24,55 @@ Considerar que:
 const VIDA_MIN_USER = 1;
 
 const NUMERO_HECIZO_1 = 3;
-const DAÑO_HECHIZO_1 = 40;
+const DAÑO_HECHIZO_1 = 60;
 
-const NUMERO_HECIZO_2 = 7;
-const DAÑO_HECHIZO_2 = 60;
+const NUMERO_HECIZO_2 = 4;
+const DAÑO_HECHIZO_2 = 70;
 
 const NUMERO_HECIZO_3 = 1;
-const DAÑO_HECHIZO_3 = 30;
+const DAÑO_HECHIZO_3 = 90;
 
 const VIDA_MIN_VOLDEMORT = -1;
-const ATAQUE_VOLDEMORT =50;
+const ATAQUE_VOLDEMORT =40;
 
 
 function main() {
-    let voldemorVivo = true;
-    let jugadorVivo = true;
+    
     let perdedor = false;
     let hechizoIngresado = 0;
-    let numeroAleatorio = Math.floor((Math.random()*10) + 1);
     let vidaUser = 200;
     let vidaVoldemort = 300;
 
     console.log("Cuidado ahì viene Voldemort, detenlo!!!");
     console.log("Los hechizos lanzados tendran una porbabilidad de acertar o no");
-    console.log("Tendras tres hehizos Hechizo-1[3], Hechizo-2[7], Hechizo-3[1]");
-    hechizoIngresado = Number(leer());
     
     
-    while((voldemorVivo && jugadorVivo) == true){
+    
+    while(perdedor == false){
+        let numeroAleatorio = Math.floor((Math.random()*5) + 1);
         
-        atacarVoldemort(hechizoIngresado, NUMERO_HECIZO_1, DAÑO_HECHIZO_1, numeroAleatorio, vidaVoldemort);
+        console.log(numeroAleatorio)
+        console.log(`Tendras tres hehizos Hechizo-1[${NUMERO_HECIZO_1}], Hechizo-2[${NUMERO_HECIZO_2}], Hechizo-3[${NUMERO_HECIZO_3}]`);
+        hechizoIngresado = Number(leer());
 
-        ataqueRecibido(hechizoIngresado, NUMERO_HECIZO_1, vidaUser);
-        break;
-        
+        if (hechizoIngresado == NUMERO_HECIZO_1){
+            console.log("[ELEGISTE EL HECHIZO-1]");
+            vidaVoldemort = atacarVoldemort(hechizoIngresado, DAÑO_HECHIZO_1, numeroAleatorio, vidaVoldemort);
+            vidaUser = ataqueRecibido(hechizoIngresado, numeroAleatorio, vidaUser);
+            perdedor = estanMuertos(vidaUser, vidaVoldemort);
+        } else if(hechizoIngresado == NUMERO_HECIZO_2){
+            console.log("[ELEGISTE EL HECHIZO-2]");
+            vidaVoldemort = atacarVoldemort(hechizoIngresado, DAÑO_HECHIZO_2, numeroAleatorio, vidaVoldemort);
+            vidaUser = ataqueRecibido(hechizoIngresado, numeroAleatorio, vidaUser);
+            perdedor = estanMuertos(vidaUser, vidaVoldemort);
+        }else if(hechizoIngresado == NUMERO_HECIZO_3){
+            console.log("[ELEGISTE EL HECHIZO-3]");
+            vidaVoldemort = atacarVoldemort(hechizoIngresado, DAÑO_HECHIZO_3, numeroAleatorio, vidaVoldemort);
+            vidaUser = ataqueRecibido(hechizoIngresado, numeroAleatorio, vidaUser);
+            perdedor = estanMuertos(vidaUser, vidaVoldemort);
+        }else{
+            console.log("numero incoreccto!");
+        }
 
     }
     
@@ -66,19 +81,30 @@ function main() {
 
 main();
 
-function atacarVoldemort(numIngresado, numeroHechizo, daño, numAleatorio, Voldemort){
-
-    if (numIngresado == numeroHechizo){
-        console.log("[ELEGISTE EL HECHIZO-1]");
+/**
+ * Verifica si el ataque fue exitoso o no
+ * @param {Number} numIngresado por el usuario
+ * @param {Number} daño recibido por Voldemort
+ * @param {Number} numAleatorio generado para comparar probabilidad
+ * @param {Number} Voldemort se le restara su vida si se hacierta
+ * @returns la vida de Voldemort 
+ */
+function atacarVoldemort(numIngresado, daño, numAleatorio, Voldemort){
         if (numIngresado == numAleatorio){
             Voldemort -= daño;
             console.log(`[ATAQUE EXITOSO, VOLDEMORT TIENE ${Voldemort}]`);
         }
-    }
     return Voldemort;
 
 }
 
+/**
+ * Te advierte si fallo y te resta vida por daño
+ * @param {number} numIngresado por el usuario
+ * @param {Number} numeroHechizo para identificar, que hechizo es
+ * @param {Number} vidaJugador se restara
+ * @returns Se devolvera el la vidaJugador restada
+ */
 function ataqueRecibido(numIngresado, numeroHechizo, vidaJugador){
     if(numIngresado != numeroHechizo){
         console.log("[FALLASTE!!!]");
@@ -86,5 +112,26 @@ function ataqueRecibido(numIngresado, numeroHechizo, vidaJugador){
         vidaJugador -= ATAQUE_VOLDEMORT;
         console.log(`[ATAQUE RECIBIDO, VIDA JUGADOR ${vidaJugador}]`);
     }
+
     return vidaJugador;
+}
+
+/**
+ * verifica si esta alguien murio
+ * @param {Number} vidaUser  
+ * @param {number} vidaVoldemort 
+ * @returns Se entrega un boleano, si esta muerto True
+ */
+function estanMuertos(vidaUser, vidaVoldemort){
+    let confirmacion = false;
+
+    if (vidaUser <= VIDA_MIN_USER){
+        confirmacion = true;
+        console.log("[GAME OVER]");
+    } else if(vidaVoldemort <= VIDA_MIN_VOLDEMORT){
+        confirmacion = true;
+        console.log("[GANASTE!!!!]");
+    }
+
+    return confirmacion;
 }
