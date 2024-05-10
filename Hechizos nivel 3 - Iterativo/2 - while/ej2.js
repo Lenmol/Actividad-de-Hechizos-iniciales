@@ -16,42 +16,77 @@ Recuerda, tanto tú como tu ser querido pueden recibir ataques de los Dementores
  */
 
 const ATAQUE_DEMENTOR = 15;
+const ATAQUE_PERSONA_MISTERIOSA = 70;
 
 function main() {
 
-    let felicidadUser = 100; 
-    let felicidadAmigo = 100;
-    let numAleatorio = Math.floor(Math.random()*4)
-    let numIngresado = 0;
-    let perdioDementor = true;
-    let perdioUser = true;
-    let perdioAmigo = true;
-
-    console.log("ingresar números aleatorios entre 0 y 3. Si adivinas correctamente el número aleatorio generado por los Dementores, lograrás defenderte y proteger tus recuerdos.");
-    numIngresado = Number(leer());
-
-
-    if ((perdioDementor && perdioUser && perdioAmigo) == true){
-        
-        if(numAleatorio == numIngresado){
-            
-        }
+    let felicidad = {
+    felicidadUser : 100, 
+    felicidadAmigo : 100,
     }
     
+    let numIngresado = 0;
+    
+    let vidaDementores = 200;
 
+    let perdedor = false;
+    let turnosTotales = 0;
 
-    console.log("h")
+    
+    console.log("ingresar números aleatorios entre 0 y 3. Si adivinas correctamente el número aleatorio generado por los Dementores, lograrás defenderte y proteger tus recuerdos.");
 
+    while (perdedor == false){
+        let numAleatorio = Math.floor(Math.random()*4);
+        
+        turnosTotales ++;
+        console.log("Ingresa numero entre 0 y 3")
+        numIngresado = Number(leer());
+
+        if(turnosTotales == 5){
+            vidaDementores -= ATAQUE_PERSONA_MISTERIOSA;
+            console.log(`Vino una persona misteriosa a ayudarte le saco ${ATAQUE_PERSONA_MISTERIOSA} de daño, el Dementor tiene ${vidaDementores}`);
+            turnosTotales = 0;
+        }
+        verificacionIngualdad(numAleatorio, numIngresado, felicidad);
+        perdedor = estanTristes(felicidad, vidaDementores);
+    
+}
+}
+function verificacionIngualdad(numRandom, numUser, felicidad){
+    let ataqueAleatorio = Math.floor((Math.random()*3) + 1);
+    if(numRandom == numUser){
+            console.log("[LOGRASTE DEFENDERTE]");
+        } else if(numRandom != numUser){
+            console.log(ataqueAleatorio);
+            if(ataqueAleatorio == 3){
+                console.log("ATAQUE DOBLE");
+                felicidad.felicidadUser -= ATAQUE_DEMENTOR;
+                felicidad.felicidadAmigo -= ATAQUE_DEMENTOR;
+            }else if(ataqueAleatorio = 1){
+                felicidad.felicidadUser -= ATAQUE_DEMENTOR;
+            }else{
+                felicidad.felicidadAmigo -= ATAQUE_DEMENTOR;
+            }
+            console.log(`te atacaron tu felicidad es ${felicidad.felicidadUser} y de tu amigo ${felicidad.felicidadAmigo}`);
+        }
 }
 
 
-    // si los Dementores lanzan más de cinco ataques, existe la posibilidad de que aparezca una persona misteriosa para ayudarte a derrotar a los Dementores
-
-
-    // anto tú como tu ser querido pueden recibir ataques de los Dementores, pero solo uno a la vez, a menos que ocurra un número especial en el controlador de ataque. 
+function estanTristes(felicidad, dementores){
+    let confirmacion = false;
     
-    // Si tu felicidad y recuerdos alegres llegan a cero o la de tu ser querido entonces es el fin para ambos. Mantén tu concentración y tu valentía mientras te enfrentas a este desafío.
-
+    if (felicidad.felicidadUser <= 0){
+        confirmacion = true;
+        console.log("[GAME OVER]");
+    } else if(felicidad.felicidadAmigo <= 0){
+        confirmacion = true;
+        console.log("[GAME OVER]");
+    }else if(dementores <= 0){
+        console.log(`Lo lograste sobrebiviste a los dementores`)
+        confirmacion = true;
+    }
+    return confirmacion;
+}
 
 
 
